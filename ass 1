@@ -1,0 +1,73 @@
+linear search
+
+import java.util.*;
+
+class LinearSearch {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of contacts: ");
+        int n = sc.nextInt();
+
+        long[] contacts = new long[n];
+        for (int i = 0; i < n; i++)
+            contacts[i] = sc.nextLong();
+
+        System.out.print("Enter contact to search: ");
+        long key = sc.nextLong();
+
+        long start = System.nanoTime();
+
+        for (int i = 0; i < n; i++) {
+            if (contacts[i] == key) {
+                System.out.println("Found at position " + (i + 1));
+                System.out.println("Time taken = " + (System.nanoTime() - start) + " ns");
+                return;
+            }
+        }
+
+        System.out.println("Not found");
+        System.out.println("Time taken = " + (System.nanoTime() - start) + " ns");
+    }
+}
+
+binary search
+
+import java.util.*;
+
+class BinarySearch {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of contacts: ");
+        int n = sc.nextInt();
+
+        long[] contacts = new long[n];
+        for (int i = 0; i < n; i++)
+            contacts[i] = sc.nextLong();
+
+        System.out.print("Enter contact to search: ");
+        long key = sc.nextLong();
+
+        long start = System.nanoTime();
+        int l = 0, r = n - 1;
+
+        while (l <= r) {
+            int m = (l + r) / 2;
+
+            if (contacts[m] == key) {
+                System.out.println("Found at position " + (m + 1));
+                System.out.println("Time taken = " + (System.nanoTime() - start) + " ns");
+                return;
+            }
+
+            if (key < contacts[m])
+                r = m - 1;
+            else
+                l = m + 1;
+        }
+
+        System.out.println("Not found");
+        System.out.println("Time taken = " + (System.nanoTime() - start) + " ns");
+    }
+}

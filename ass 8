@@ -1,0 +1,33 @@
+dijkstra
+
+import java.util.*;
+
+class Dijkstra {
+    public static void main(String[] args) {
+        int[][] g={{0,63,24,35,0,0,0},{63,0,40,0,0,40,0},{24,40,0,25,39,100,0},
+                   {35,0,25,0,46,0,0},{0,0,39,46,0,0,60},{0,40,100,0,0,0,60},
+                   {0,0,0,0,60,60,0}};
+
+        String[] c={"BGK","RON","KER","BDM","NAR","GAD","HBL"};
+        int n=g.length,d[]=new int[n]; 
+        boolean[] v=new boolean[n];
+
+        Arrays.fill(d,Integer.MAX_VALUE);
+        d[0]=0;
+
+        for(int i=0;i<n-1;i++){
+            int u=-1;
+            for(int j=0;j<n;j++)
+                if(!v[j]&&(u==-1||d[j]<d[u])) u=j;
+
+            v[u]=true;
+
+            for(int j=0;j<n;j++)
+                if(g[u][j]>0&&!v[j]&&d[u]+g[u][j]<d[j])
+                    d[j]=d[u]+g[u][j];
+        }
+
+        for(int i=1;i<n;i++)
+            System.out.println("BGK->"+c[i]+"="+d[i]+" km");
+    }
+}

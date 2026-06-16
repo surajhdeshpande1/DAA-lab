@@ -1,0 +1,22 @@
+string matching
+
+import java.util.*;
+
+class StringMatching {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String t = sc.next(), p = sc.next();
+
+        long s = System.nanoTime();
+
+        for (int i = 0; i <= t.length() - p.length(); i++)
+            if (t.substring(i, i + p.length()).equals(p)) {
+                System.out.println("Match found at " + (i + 1));
+                System.out.println("Time = " + (System.nanoTime() - s) + " ns");
+                return;
+            }
+
+        System.out.println("Match not found");
+        System.out.println("Time = " + (System.nanoTime() - s) + " ns");
+    }
+}

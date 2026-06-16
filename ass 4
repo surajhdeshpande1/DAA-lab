@@ -1,0 +1,22 @@
+quick sort
+
+import java.util.*;
+
+class QS {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] d = new int[n];
+
+        for (int i = 0; i < n; i++) d[i] = sc.nextInt();
+
+        long s = System.nanoTime();
+        Arrays.sort(d);
+
+        System.out.println(Arrays.toString(d));
+        System.out.println("Near = " + d[0]);
+        System.out.println("Middle = " + d[n / 2]);
+        System.out.println("Far = " + d[n - 1]);
+        System.out.println("Time = " + (System.nanoTime() - s) + " ns");
+    }
+}

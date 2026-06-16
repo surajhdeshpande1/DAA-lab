@@ -1,0 +1,189 @@
+linear search
+
+import java.util.*;
+
+class LinearSearch {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of contacts: ");
+        int n = sc.nextInt();
+
+        long[] contacts = new long[n];
+        for (int i = 0; i < n; i++)
+            contacts[i] = sc.nextLong();
+
+        System.out.print("Enter contact to search: ");
+        long key = sc.nextLong();
+
+        long start = System.nanoTime();
+
+        for (int i = 0; i < n; i++) {
+            if (contacts[i] == key) {
+                System.out.println("Found at position " + (i + 1));
+                System.out.println("Time taken = " + (System.nanoTime() - start) + " ns");
+                return;
+            }
+        }
+
+        System.out.println("Not found");
+        System.out.println("Time taken = " + (System.nanoTime() - start) + " ns");
+    }
+}
+
+binary search
+
+import java.util.*;
+
+class BinarySearch {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of contacts: ");
+        int n = sc.nextInt();
+
+        long[] contacts = new long[n];
+        for (int i = 0; i < n; i++)
+            contacts[i] = sc.nextLong();
+
+        System.out.print("Enter contact to search: ");
+        long key = sc.nextLong();
+
+        long start = System.nanoTime();
+        int l = 0, r = n - 1;
+
+        while (l <= r) {
+            int m = (l + r) / 2;
+
+            if (contacts[m] == key) {
+                System.out.println("Found at position " + (m + 1));
+                System.out.println("Time taken = " + (System.nanoTime() - start) + " ns");
+                return;
+            }
+
+            if (key < contacts[m])
+                r = m - 1;
+            else
+                l = m + 1;
+        }
+
+        System.out.println("Not found");
+        System.out.println("Time taken = " + (System.nanoTime() - start) + " ns");
+    }
+}
+
+short to tall
+
+import java.util.*;
+
+class ShortTall {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] h = new int[n];
+
+        for (int i = 0; i < n; i++) h[i] = sc.nextInt();
+
+        long s = System.nanoTime();
+
+        for (int i = 0; i < n - 1; i++)
+            for (int j = 0; j < n - 1 - i; j++)
+                if (h[j] > h[j + 1]) {
+                    int t = h[j];
+                    h[j] = h[j + 1];
+                    h[j + 1] = t;
+                }
+
+        System.out.println(Arrays.toString(h));
+        System.out.println("Time = " + (System.nanoTime() - s) + " ns");
+    }
+}
+
+string matching
+
+import java.util.*;
+
+class StringMatching {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String t = sc.next(), p = sc.next();
+
+        long s = System.nanoTime();
+
+        for (int i = 0; i <= t.length() - p.length(); i++)
+            if (t.substring(i, i + p.length()).equals(p)) {
+                System.out.println("Match found at " + (i + 1));
+                System.out.println("Time = " + (System.nanoTime() - s) + " ns");
+                return;
+            }
+
+        System.out.println("Match not found");
+        System.out.println("Time = " + (System.nanoTime() - s) + " ns");
+    }
+}
+
+quick sort
+
+import java.util.*;
+
+class QS {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] d = new int[n];
+
+        for (int i = 0; i < n; i++) d[i] = sc.nextInt();
+
+        long s = System.nanoTime();
+        Arrays.sort(d);
+
+        System.out.println(Arrays.toString(d));
+        System.out.println("Near = " + d[0]);
+        System.out.println("Middle = " + d[n / 2]);
+        System.out.println("Far = " + d[n - 1]);
+        System.out.println("Time = " + (System.nanoTime() - s) + " ns");
+    }
+}
+
+merge sort
+
+import java.util.*;
+
+class MergePapers {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n1 = sc.nextInt(), n2 = sc.nextInt();
+        char[] p = new char[n1 + n2];
+
+        for (int i = 0; i < n1; i++) p[i] = sc.next().charAt(0);
+        for (int i = 0; i < n2; i++) p[n1 + i] = sc.next().charAt(0);
+
+        long s = System.nanoTime();
+        Arrays.sort(p);
+
+        System.out.println(Arrays.toString(p));
+        System.out.println("Time = " + (System.nanoTime() - s) + " ns");
+    }
+}
+
+heapsort
+
+import java.util.*;
+
+class HeapProgram {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] a = new int[n];
+
+        for (int i = 0; i < n; i++) a[i] = sc.nextInt();
+
+        Arrays.sort(a);
+
+        System.out.print("Heap: ");
+        for (int i = n - 1; i >= 0; i--) System.out.print(a[i] + " ");
+
+        System.out.println("\nSorted: " + Arrays.toString(a));
+    }
+}
